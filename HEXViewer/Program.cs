@@ -5,17 +5,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Zadejte adresu souboru, kterou chcete zobrazit: ");
-
-        string filename = Console.ReadLine();
-
-        if (!File.Exists(filename))
+        if (!File.Exists(args[0]))
         {
             Console.WriteLine("Soubor neexistuje");
             return;
         }
 
-        using (FileStream fs = new FileStream(filename, FileMode.Open))
+        using (FileStream fs = new FileStream(args[0], FileMode.Open))
         {
             int offset = 0;
             byte[] buffer = new byte[16];
